@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pandacliffy - YouTube</title>
+    <title>Pandacliffy - Watch SML Videos</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        function searchYouTube() {
-            const query = document.getElementById("youtube-search-input").value;
-            const url = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query);
-            window.open(url, '_blank');
-        }
-    </script>
 </head>
 <body>
     <header>
-        <h1>Search YouTube</h1>
-        <p>Find your favorite videos on YouTube!</p>
+        <h1>Watch SML Videos</h1>
+        <p>Enjoy SuperMarioLogan videos directly on Pandacliffy.</p>
     </header>
 
     <main>
-        <section id="youtube-search">
-            <h2>Search YouTube</h2>
-            <input type="text" id="youtube-search-input" placeholder="Search for videos...">
-            <button onclick="searchYouTube()">Search</button>
+        <section id="sml-videos">
+            <h2>Featured SML Videos</h2>
+            
+            <!-- Embed SML Videos from YouTube -->
+            <div class="video-embed">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/B8kv7_e2R4w" 
+                title="SuperMarioLogan - Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-embed">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/07y0hG9tznI" 
+                title="SuperMarioLogan - Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-embed">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/nMePsfWqygI" 
+                title="SuperMarioLogan - Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+            </div>
+
+            <!-- You can add more embedded videos here if needed -->
         </section>
     </main>
 
