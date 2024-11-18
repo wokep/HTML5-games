@@ -2,17 +2,19 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #f0f0f0; /* Light text */
-}
-
-h1 {
+    background-color: #2c2c2c; /* Dark background */
+    color: #ffffff; /* White text */
     text-align: center;
-    font-size: 2.5rem;
-    margin-top: 20px;
-    color: #ffa500; /* Orange accent */
 }
 
+/* Header Style */
+h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #00bcd4; /* Light blue */
+}
+
+/* Container for Boxes */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -23,44 +25,32 @@ h1 {
 
 /* Box Styles */
 .box {
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #424242; /* Darker gray */
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
 }
 
 .box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
 }
 
 .box a {
     text-decoration: none;
-    color: #ffa500; /* Orange links */
     font-size: 1.2rem;
-    font-weight: bold;
+    color: #00bcd4; /* Light blue links */
 }
 
 .box a:hover {
-    color: #ff5722; /* Brighter hover color */
+    color: #ff9800; /* Orange hover */
 }
 
-/* Footer Styles */
+/* Footer */
 footer {
     margin-top: 30px;
-    text-align: center;
     font-size: 0.9rem;
-    color: #666;
-}
-
-footer a {
-    color: #ffa500;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #ff5722;
+    color: #b0b0b0;
 }
