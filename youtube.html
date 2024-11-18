@@ -3,37 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube</title>
+    <title>Pandacliffy - YouTube</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function searchYouTube() {
+            const query = document.getElementById("youtube-search-input").value;
+            const url = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query);
+            window.open(url, '_blank');
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>Watch YouTube Videos</h1>
+        <h1>Search YouTube</h1>
+        <p>Find your favorite videos on YouTube!</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="games.html">Games</a></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="shows.html">Shows</a></li>
-            <li><a href="study.html">Study</a></li>
-            <li><a href="spotify.html">Spotify</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <section id="youtube">
-            <h2>Enjoy Videos on YouTube</h2>
-            <p>Here are some great YouTube videos you can watch.</p>
-            
-            <!-- Example of embedding YouTube video -->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <section id="youtube-search">
+            <h2>Search YouTube</h2>
+            <input type="text" id="youtube-search-input" placeholder="Search for videos...">
+            <button onclick="searchYouTube()">Search</button>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Your Entertainment Hub. All Rights Reserved.</p>
+        <p>&copy; 2024 Pandacliffy | All Rights Reserved</p>
     </footer>
 </body>
 </html>
