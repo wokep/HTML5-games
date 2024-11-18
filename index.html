@@ -3,22 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Collection</title>
+    <title>Panda Entertainment </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>HTML5 Game Collection</h1>
-        <p>Select a game to play!</p>
+        <h1>Pandas Entertainment</h1>
+        <p>Explore Movies, Games, and Shows!</p>
     </header>
+
+    <nav>
+        <ul class="tabs">
+            <li><a href="#movies">Movies</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#shows">Shows</a></li>
+        </ul>
+    </nav>
+
     <main>
-        <div class="games-grid" id="games-grid">
-            <!-- Game cards will be generated here -->
-        </div>
+        <!-- Movies Section -->
+        <section id="movies" class="content">
+            <h2>Movies</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Night of the Living Dead</h3>
+                    <iframe width="300" height="200" src="https://archive.org/embed/night_of_the_living_dead" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="card">
+                    <h3>Plan 9 from Outer Space</h3>
+                    <iframe width="300" height="200" src="https://archive.org/embed/Plan_9_from_Outer_Space" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <!-- Add more movie cards as needed -->
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="content">
+            <h2>Games</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Game 1</h3>
+                    <p>Placeholder for a game. Add game links or content here.</p>
+                </div>
+                <div class="card">
+                    <h3>Game 2</h3>
+                    <p>Placeholder for another game.</p>
+                </div>
+                <!-- Add game cards dynamically from your games list -->
+            </div>
+        </section>
+
+        <!-- Shows Section -->
+        <section id="shows" class="content">
+            <h2>Shows</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Example Show 1</h3>
+                    <p>Placeholder for a show description or embedded content.</p>
+                </div>
+                <div class="card">
+                    <h3>Example Show 2</h3>
+                    <p>Placeholder for another show.</p>
+                </div>
+                <!-- Add more show cards as needed -->
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2024 Game Collection | All Rights Reserved</p>
+        <p>&copy; 2024 Entertainment Hub | Built with GitHub Pages</p>
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>
