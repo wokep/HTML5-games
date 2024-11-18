@@ -1,180 +1,66 @@
-/* Universal Styles */
+/* General Styles */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    color: #f0f0f0;
-    background-color: #121212;
-    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #f0f0f0; /* Light text */
 }
 
-h1, h2, h3 {
-    font-weight: bold;
-    color: #f8f8f8;
+h1 {
     text-align: center;
+    font-size: 2.5rem;
+    margin-top: 20px;
+    color: #ffa500; /* Orange accent */
 }
 
-a {
-    text-decoration: none;
-    color: #2196f3;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #42a5f5;
-}
-
-/* Navbar */
-.navbar {
+.container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: #1e1e1e;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.navbar a {
-    color: #f8f8f8;
-    margin: 0 10px;
-    font-size: 1.1rem;
-}
-
-.navbar a:hover {
-    color: #64b5f6;
-}
-
-.navbar .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #42a5f5;
-}
-
-/* Buttons */
-button {
-    background-color: #1e88e5;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-    background-color: #1565c0;
-    transform: scale(1.05);
-}
-
-/* Main Content */
-main {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.card {
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 15px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.card h2 {
-    color: #64b5f6;
-}
-
-.card p {
-    color: #cfcfcf;
-}
-
-/* Chatbox */
-#chat-box {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    border: 2px solid #333;
-    border-radius: 10px;
-    background-color: #1e1e1e;
-    overflow-y: auto;
-    height: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-#messages {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: #f0f0f0;
-}
-
-#messages li {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 5px;
-}
-
-#message-input {
-    width: 80%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #2e2e2e;
-    color: #f8f8f8;
-    margin-top: 10px;
-}
-
-#send-btn {
-    background-color: #1e88e5;
-    color: #f8f8f8;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#send-btn:hover {
-    background-color: #1565c0;
-    transform: scale(1.1);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #1e1e1e;
-    color: #cfcfcf;
-    font-size: 0.9rem;
-    position: sticky;
-    bottom: 0;
-}
-
-/* Loading Animation */
-#loading-screen {
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: #121212;
-    z-index: 999;
-    color: #f0f0f0;
-    font-size: 1.5rem;
-    font-weight: bold;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Box Styles */
+.box {
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
 }
 
-.hidden {
-    display: none;
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+.box a {
+    text-decoration: none;
+    color: #ffa500; /* Orange links */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.box a:hover {
+    color: #ff5722; /* Brighter hover color */
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+footer a {
+    color: #ffa500;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ff5722;
 }
