@@ -3,129 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games | Entertainment Hub</title>
+    <title>Games - Game and Movie Portal</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to filter games based on search input
+        function filterGames() {
+            const searchInput = document.getElementById("search").value.toLowerCase();
+            const gamesList = document.getElementById("game-list");
+            const games = gamesList.getElementsByTagName("li");
+
+            // Loop through each game and hide those that don't match the search term
+            for (let i = 0; i < games.length; i++) {
+                const game = games[i];
+                const gameName = game.textContent || game.innerText;
+                if (gameName.toLowerCase().indexOf(searchInput) > -1) {
+                    game.style.display = "";
+                } else {
+                    game.style.display = "none";
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
         <h1>Games</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="shows.html">Shows</a></li>
+                <li><a href="youtube.html">YouTube</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul class="tabs">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="games.html">Games</a></li>
-            <li><a href="shows.html">Shows</a></li>
-        </ul>
-    </nav>
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search for a game..." onkeyup="filterGames()">
+    </div>
 
-    <main>
-        <section>
-            <h2>Games</h2>
-            <div class="grid">
-                <!-- List of games with links to their HTML files inside the html5 folder -->
-                <div class="card">
-                    <h3><a href="html5/1v1lol/index.html" target="_blank">1v1lol</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/2048/index.html" target="_blank">2048</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/8ball/index.html" target="_blank">8ball</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/adarkroom/index.html" target="_blank">Adarkroom</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/amongus/index.html" target="_blank">Among Us</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/asciispace/index.html" target="_blank">Asciispace</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/asteroids/index.html" target="_blank">Asteroids</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/astray/index.html" target="_blank">Astray</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/backcountry/index.html" target="_blank">Backcountry</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/basketballstars/index.html" target="_blank">Basketball Stars</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/blackholesquare/index.html" target="_blank">Blackholesquare</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/bloonstd4/index.html" target="_blank">Bloons TD4</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/bounceback/index.html" target="_blank">Bounceback</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/breaklock/index.html" target="_blank">Breaklock</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/breakout/index.html" target="_blank">Breakout</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/captaincallisto/index.html" target="_blank">Captain Callisto</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/chess/index.html" target="_blank">Chess</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/chromaincident/index.html" target="_blank">Chromaincident</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/chrome-dino/index.html" target="_blank">Chrome Dino</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/chromedino/index.html" target="_blank">Chromedino</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/connect3/index.html" target="_blank">Connect3</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/cookieclicker/index.html" target="_blank">Cookie Clicker</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/crossyroad/index.html" target="_blank">Crossy Road</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/cubefield/index.html" target="_blank">Cubefield</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/cuttherope/index.html" target="_blank">Cut the Rope</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/cuttherope2/index.html" target="_blank">Cut the Rope 2</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/cuttheropeholiday/index.html" target="_blank">Cut the Rope Holiday</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/cuttheropetimetravel/index.html" target="_blank">Cut the Rope Time Travel</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/dinosaur/index.html" target="_blank">Dinosaur</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/doctor-acorn2/index.html" target="_blank">Doctor Acorn 2</a></h3>
-                </div>
-                <div class="card">
-                    <h3><a href="html5/doctor-acorn3/index.html" target="_blank">Doctor Acorn 3</a></h3>
-                </div>
-                <!-- Add more games as needed -->
-            </div>
-        </section>
-    </main>
+    <div class="game-list">
+        <h2>Game List</h2>
+        <ul id="game-list">
+            <li><a href="html5/1v1lol/index.html">1v1LOL</a></li>
+            <li><a href="html5/2048/index.html">2048</a></li>
+            <li><a href="html5/8ball/index.html">8Ball</a></li>
+            <li><a href="html5/adarkroom/index.html">Adarkroom</a></li>
+            <li><a href="html5/amongus/index.html">Among Us</a></li>
+            <li><a href="html5/asciispace/index.html">Asciispace</a></li>
+            <li><a href="html5/asteroids/index.html">Asteroids</a></li>
+            <li><a href="html5/astray/index.html">Astray</a></li>
+            <li><a href="html5/backcountry/index.html">Backcountry</a></li>
+            <li><a href="html5/basketballstars/index.html">Basketball Stars</a></li>
+            <li><a href="html5/blackholesquare/index.html">Blackhole Square</a></li>
+            <li><a href="html5/bloonstd4/index.html">Bloonstd4</a></li>
+            <li><a href="html5/bounceback/index.html">Bounceback</a></li>
+            <li><a href="html5/breaklock/index.html">Breaklock</a></li>
+            <li><a href="html5/breakout/index.html">Breakout</a></li>
+            <li><a href="html5/captaincallisto/index.html">Captain Callisto</a></li>
+            <li><a href="html5/chess/index.html">Chess</a></li>
+            <li><a href="html5/chromaincident/index.html">Chroma Incident</a></li>
+            <li><a href="html5/chrome-dino/index.html">Chrome Dino</a></li>
+            <li><a href="html5/chromedino/index.html">Chromedino</a></li>
+            <li><a href="html5/connect3/index.html">Connect 3</a></li>
+            <li><a href="html5/cookieclicker/index.html">Cookie Clicker</a></li>
+            <li><a href="html5/crossyroad/index.html">Crossy Road</a></li>
+            <li><a href="html5/cubefield/index.html">Cubefield</a></li>
+            <li><a href="html5/cuttherope/index.html">Cut the Rope</a></li>
+            <li><a href="html5/cuttherope2/index.html">Cut the Rope 2</a></li>
+            <li><a href="html5/cuttheropeholiday/index.html">Cut the Rope Holiday</a></li>
+            <li><a href="html5/cuttheropetimetravel/index.html">Cut the Rope Time Travel</a></li>
+            <li><a href="html5/dinosaur/index.html">Dinosaur</a></li>
+            <li><a href="html5/doctor-acorn2/index.html">Doctor Acorn 2</a></li>
+            <li><a href="html5/doctor-acorn3/index.html">Doctor Acorn 3</a></li>
+            <li><a href="html5/doge2048/index.html">Doge 2048</a></li>
+            <li><a href="html5/dogeminer/index.html">Doge Miner</a></li>
+            <li><a href="html5/doodle-jump/index.html">Doodle Jump</a></li>
+            <li><a href="html5/driftboss/index.html">Driftboss</a></li>
+            <li><a href="html5/ducklife/index.html">Ducklife</a></li>
+            <li><a href="html5/ducklife2/index.html">Ducklife 2</a></li>
+            <li><a href="html5/ducklife3/index.html">Ducklife 3</a></li>
+            <li><a href="html5/ducklife4/index.html">Ducklife 4</a></li>
+            <li><a href="html5/ducklife5/index.html">Ducklife 5</a></li>
+            <li><a href="html5/edge-surf/index.html">Edge Surf</a></li>
+            <li><a href="html5/edgenotfound/index.html">Edge Not Found</a></li>
+            <li><a href="html5/elasticmorty/index.html">Elastic Morty</a></li>
+            <li><a href="html5/evilglitch/index.html">Evil Glitch</a></li>
+            <li><a href="html5/factoryballsforever/index.html">Factory Balls Forever</a></li>
+            <li><a href="html5/fireboy-and-watergirl-1/index.html">Fireboy and Watergirl 1</a></li>
+            <li><a href="html5/fireboy-and-watergirl-2/index.html">Fireboy and Watergirl 2</a></li>
+            <li><a href="html5/fireboy-and-watergirl-3/index.html">Fireboy and Watergirl 3</a></li>
+            <li><a href="html5/fireboy-and-watergirl-4/index.html">Fireboy and Watergirl 4</a></li>
+            <li><a href="html5/firewater/index.html">Firewater</a></li>
+            <li><a href="html5/flappy-2048/index.html">Flappy 2048</a></li>
+            <li><a href="html5/flappybird/index.html">Flappy Bird</a></li>
+            <li><a href="html5/fnaf/index.html">FNAF</a></li>
+            <li><a href="html5/fnaf2/index.html">FNAF 2</a></li>
+            <li><a href="html5/fnaf3/index.html">FNAF 3</a></li>
+            <li><a href="html5/fnaf4/index.html">FNAF 4</a></li>
+            <li><a href="html5/friendlyfire/index.html">Friendly Fire</a></li>
+            <li><a href="html5/geometry/index.html">Geometry</a></li>
+            <li><a href="html5/geometrydash/index.html">Geometry Dash</a></li>
+            <li><a href="html5/gopher/index.html">Gopher</a></li>
+            <li><a href="html5/hextris/index.html">Hextris</a></li>
+            <li><a href="html5/icypurplehead2/index.html">Icy Purplehead 2</a></li>
+            <li><a href="html5/icypurplehead3/index.html">Icy Purplehead 3</a></li>
+            <li><a href="html5/konnekt/index.html">Konnekt</a></li>
+            <li><a href="html5/mc1.5.2/index.html">MC 1.5.2</a></li>
+            <li><a href="html5/mcbeta0.30/index.html">MC Beta 0.30</a></li>
+            <li><a href="html5/mcbeta1.3/index.html">MC Beta 1.3</a></li>
+            <li><a href="html5/minecraft/index.html">Minecraft</a></li>
+            <li><a href="html5/motox3m/index.html">Moto X3M</a></li>
+            <li><a href="html5/ninjavsevilcorp/index.html">Ninja vs Evil Corp</a></li>
+            <li><a href="html5/packabunchas/index.html">Pack A Bunchas</a></li>
+            <li><a href="html5/pacman/index.html">Pacman</a></li>
+            <li><a href="html5/paperio/index.html">Paper.io</a></li>
+            <li><a href="html5/particleclicker/index.html">Particle Clicker</a></li>
+            <li><a href="html5/physicsplayground/index.html">Physics Playground</a></li>
+            <li><a href="html5/pushback/index.html">Pushback</a></li>
+            <li><a href="html5/q1k3/index.html">Q1K3</a></li>
+            <li><a href="html5/rabbit-samurai/index.html">Rabbit Samurai</a></li>
+            <li><a href="html5/rabbit-samurai2/index.html">Rabbit Samurai 2</a></li>
+            <li><a href="html5/racer/index.html">Racer</a></li>
+            <li><a href="html5/radiusraid/index.html">Radius Raid</a></li>
+            <li><a href="html5/retrobowl/index.html">Retro Bowl</a></li>
+            <li><a href="html5/retrohaunt/index.html">Retro Haunt</a></li>
+            <li><a href="html5/roadblocks/index.html">Roadblocks</a></li>
+            <li><a href="html5/rooftopsniper/index.html">Rooftop Sniper</a></li>
+            <li><a href="html5/run3/index.html">Run 3</a></li>
+            <li><a href="html5/shuttledeck/index.html">Shuttle Deck</a></li>
+            <li><a href="html5/sleepingbeauty/index.html">Sleeping Beauty</a></li>
+            <li><a href="html5/slitherio/index.html">Slither.io</a></li>
+            <li><a href="html5/slope/index.html">Slope</a></li>
+            <li><a href="html5/sm63/index.html">SM63</a></li>
+            <li><a href="html5/sm64/index.html">SM64</a></li>
+            <li><a href="html5/snake/index.html">Snake</a></li>
+            <li><a href="html5/spacecompany/index.html">Space Company</a></li>
+            <li><a href="html5/spacegarden/index.html">Space Garden</a></li>
+            <li><a href="html5/spacehuggers/index.html">Space Huggers</a></li>
+            <li><a href="html5/spaceinvaders/index.html">Space Invaders</a></li>
+            <li><a href="html5/stack/index.html">Stack</a></li>
+            <li><a href="html5/stacktower/index.html">Stack Tower</a></li>
+            <li><a href="html5/subway-surfers/index.html">Subway Surfers</a></li>
+            <li><a href="html5/survivio/index.html">Surviv.io</a></li>
+            <li><a href="html5/templerun/index.html">Temple Run</a></li>
+            <li><a href="html5/tetris/index.html">Tetris</a></li>
+            <li><a href="html5/towermaster/index.html">Tower Master</a></li>
+            <li><a href="html5/underrun/index.html">Underrun</a></li>
+            <li><a href="html5/vex3/index.html">Vex 3</a></li>
+            <li><a href="html5/vex4/index.html">Vex 4</a></li>
+            <li><a href="html5/vex5/index.html">Vex 5</a></li>
+            <li><a href="html5/vex6/index.html">Vex 6</a></li>
+            <li><a href="html5/webretro/index.html">Webretro</a></li>
+            <li><a href="html5/xx142-b2exe/index.html">XX142-B2Exe</a></li>
+        </ul>
+    </div>
 
     <footer>
-        <p>&copy; 2024 Entertainment Hub | Built with GitHub Pages</p>
+        <p>&copy; 2024 Game and Movie Portal</p>
     </footer>
 </body>
 </html>
-
