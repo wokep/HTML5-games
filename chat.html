@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panda Chat</title>
+    <title>Chat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to Panda Chat</h1>
-    <div id="chat-box">
-        <ul id="messages"></ul>
-    </div>
-    <input id="message-input" type="text" placeholder="Type a message">
-    <button id="send-btn">Send</button>
+    <header>
+        <h1>Chat Room</h1>
+    </header>
+    <main>
+        <div id="chat-box" class="chat-box"></div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+        </div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js"></script>
     <script src="chat.js"></script>
 </body>
 </html>
