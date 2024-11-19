@@ -3,59 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PandaCliffy</title>
+    <title>PandaCliffy - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Music -->
-    <audio id="background-music" autoplay loop>
-        <source src="https://raw.githubusercontent.com/wokep/HTML5-games/refs/heads/main/hi.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <!-- Music Play Button -->
-    <button id="play-music" onclick="document.getElementById('background-music').play()">Play Music</button>
-    <button id="pause-music" onclick="document.getElementById('background-music').pause()">Pause Music</button>
-
     <header>
-        <h1>Welcome to PandaCliffy</h1>
+        <h1>PandaCliffy</h1>
         <nav>
             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="songs.html">Songs</a></li>
                 <li><a href="games.html">Games</a></li>
-                <li><a href="youtube.html">YouTube</a></li>
-                <li><a href="spotify.html">Spotify</a></li>
-                <li><a href="study.html">Study</a></li>
+                <li><a href="movies.html">Movies</a></li>
                 <li><a href="chat.html">Chat</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="intro">
-            <h2>Explore PandaCliffy</h2>
-            <p>Your one-stop site for games, videos, and more!</p>
+        <section class="category">
+            <h2>Welcome to PandaCliffy</h2>
+            <p>Explore games, music, movies, and more!</p>
         </section>
-        <section class="categories">
-            <div class="box">
-                <h3><a href="games.html">Games</a></h3>
-                <p>Play and enjoy an endless variety of games.</p>
-            </div>
-            <div class="box">
-                <h3><a href="youtube.html">YouTube</a></h3>
-                <p>Watch videos and explore YouTube.</p>
-            </div>
-            <div class="box">
-                <h3><a href="spotify.html">Spotify</a></h3>
-                <p>Listen to your favorite music on Spotify.</p>
-            </div>
-            <div class="box">
-                <h3><a href="study.html">Study</a></h3>
-                <p>Access resources to help with your studies.</p>
-            </div>
-            <div class="box">
-                <h3><a href="chat.html">Chat</a></h3>
-                <p>Connect and chat with others.</p>
-            </div>
+
+        <section class="category">
+            <h2>Featured Songs</h2>
+            <p><a href="songs.html">Check out our music collection!</a></p>
+        </section>
+
+        <section class="category">
+            <h2>Games</h2>
+            <p><a href="games.html">Play some fun games!</a></p>
+        </section>
+
+        <section class="category">
+            <h2>Movies</h2>
+            <p><a href="movies.html">Watch some great movies!</a></p>
+        </section>
+
+        <section class="category">
+            <h2>Chat</h2>
+            <p><a href="chat.html">Join the conversation with others!</a></p>
         </section>
     </main>
 
