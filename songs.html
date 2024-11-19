@@ -3,35 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PandaCliffy Songs</title>
+    <title>PandaCliffy - Songs</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Songs</h1>
-        <p>Select a song to play from the list below!</p>
+        <h1>PandaCliffy - Songs</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="chat.html">Chat</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="box">
-            <a href="https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babychief%20doit%20nachos%20mixx%20(music%20video).mp3" target="_blank">Babychiefdoit nachos mixx (music video).mp3</a>
-        </div>
-        <div class="box">
-            <a href="https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babytron%20Hawktuah%20mixx%20(music%20video).mp3" target="_blank">Babytron Hawktuah mixx (music video).mp3</a>
-        </div>
-        <div class="box">
-            <a href="https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Punchmade%20dev%206%20million%20mixx.mp3" target="_blank">Punchmade dev 6 million mixx.mp3</a>
-        </div>
-        <div class="box">
-            <a href="https://raw.githubusercontent.com/wokep/HTML5-games/main/k/li%20rye%20christian%20mixx.mp3" target="_blank">li rye christian mixx.mp3</a>
-        </div>
-        <div class="box">
-            <a href="https://raw.githubusercontent.com/wokep/HTML5-games/main/k/new%20year%20same%20tron%20babytron%20mixx.mp3" target="_blank">new year same tron babytron mixx.mp3</a>
-        </div>
-        <div class="box">
-            <a href="https://raw.githubusercontent.com/wokep/HTML5-games/main/k/punchmade%20dev%20x%20ot%20quanny%20scambruthrs%20mixx.mp3" target="_blank">punchmade dev x ot quanny scambruthrs mixx.mp3</a>
-        </div>
-    </div>
+    <main>
+        <h2>Music Collection</h2>
+        <section class="song-list">
+            <div class="song-item">
+                <p>Babychiefdoit nachos mixx (music video)</p>
+                <audio controls>
+                    <source src="k/Babychiefdoit%20nachos%20mixx%20(music%20video).mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="song-item">
+                <p>Babytron Hawktuah mixx (music video)</p>
+                <audio controls>
+                    <source src="k/Babytron%20Hawktuah%20mixx%20(music%20video).mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="song-item">
+                <p>Punchmade dev 6 million mixx</p>
+                <audio controls>
+                    <source src="k/Punchmade%20dev%206%20million%20mixx.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="song-item">
+                <p>li rye christian mixx</p>
+                <audio controls>
+                    <source src="k/li%20rye%20christian%20mixx.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="song-item">
+                <p>new year same tron babytron mixx</p>
+                <audio controls>
+                    <source src="k/new%20year%20same%20tron%20babytron%20mixx.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="song-item">
+                <p>Punchmade dev x ot quanny scambruthrs mixx</p>
+                <audio controls>
+                    <source src="k/punchmade%20dev%20x%20ot%20quanny%20scambruthrs%20mixx.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 PandaCliffy. All rights reserved.</p>
