@@ -8,7 +8,7 @@ function playSong(songUrl) {
     if (audioPlayer.src !== songUrl || !isPlaying) {
         audioPlayer.src = songUrl;
         audioPlayer.play();
-        currentSongElement.textContent = songUrl.split('/').pop().replace('%20', ' ');
+        currentSongElement.textContent = songUrl.split('/').pop().replace('%20', ' ').replace('.mp3', '');
         isPlaying = true;
     } else {
         audioPlayer.pause();
