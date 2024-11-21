@@ -3,142 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Songs - Pandacliffy</title>
+    <title>Music Player</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Songs</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="games.html">Games</a>
-            <a href="study.html">Study</a>
-            <a href="movies.html">Movies</a>
-            <a href="shows.html">Shows</a>
-        </nav>
-    </header>
-    <main>
-        <!-- CHROMAKOPIA Album -->
-        <section class="album">
-            <h2>Album: CHROMAKOPIA</h2>
-            <ul class="song-list">
-                <li><span>1) SC (St. Chroma)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/SC.mp3', 'St. Chroma')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/SC.mp3', 'St. Chroma')">Queue</button>
-                </li>
-                <li><span>2) RAH TAH (Rah Tah)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/RAH%20TAH.mp3', 'Rah Tah')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/RAH%20TAH.mp3', 'Rah Tah')">Queue</button>
-                </li>
-                <li><span>3) NOID</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/NOID.mp3', 'Noid')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/NOID.mp3', 'Noid')">Queue</button>
-                </li>
-                <li><span>4) Darling I</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Darling%20I.mp3', 'Darling I')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Darling%20I.mp3', 'Darling I')">Queue</button>
-                </li>
-                <li><span>5) HJ (Hey Jane)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/HJ.mp3', 'Hey Jane')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/HJ.mp3', 'Hey Jane')">Queue</button>
-                </li>
-                <li><span>6) IKY (I Killed You)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/IKY.mp3', 'I Killed You')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/IKY.mp3', 'I Killed You')">Queue</button>
-                </li>
-                <li><span>7) JJ (Judge Judy)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/JJ.mp3', 'Judge Judy')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/JJ.mp3', 'Judge Judy')">Queue</button>
-                </li>
-                <li><span>8) STICKY</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/STICKY.mp3', 'Sticky')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/STICKY.mp3', 'Sticky')">Queue</button>
-                </li>
-                <li><span>9) THOUGHT I WAS DEAD</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/THOUGHT%20I%20WAS%20DEAD.mp3', 'Thought I Was Dead')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/THOUGHT%20I%20WAS%20DEAD.mp3', 'Thought I Was Dead')">Queue</button>
-                </li>
-                <li><span>10) TKYMO (Take Your Mask Off)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TKYMO.mp3', 'Take Your Mask Off')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TKYMO.mp3', 'Take Your Mask Off')">Queue</button>
-                </li>
-                <li><span>11) TMR (Tomorrow)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TMR.mp3', 'Tomorrow')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TMR.mp3', 'Tomorrow')">Queue</button>
-                </li>
-            </ul>
-        </section>
 
-        <!-- MIXXES Album -->
-        <section class="album">
-            <h2>Album: MIXXES</h2>
+    <header>
+        <h1>Music Player</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Songs</a>
+        <a href="#">Chat</a>
+        <a href="#">Games</a>
+        <a href="#">YouTube</a>
+    </nav>
+
+    <main>
+        <div class="album">
+            <h2>CHROMAKOPIA</h2>
             <ul class="song-list">
-                <li><span>1) Babychiefdoit Nachos Mixx (Music Video)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babychiefdoit%20nachos%20mixx%20(music%20video).mp3', 'Babychiefdoit Nachos Mixx')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babychiefdoit%20nachos%20mixx%20(music%20video).mp3', 'Babychiefdoit Nachos Mixx')">Queue</button>
-                </li>
-                <li><span>2) Babytron Hawktuah Mixx (Music Video)</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babytron%20Hawktuah%20mixx%20(music%20video).mp3', 'Babytron Hawktuah Mixx')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babytron%20Hawktuah%20mixx%20(music%20video).mp3', 'Babytron Hawktuah Mixx')">Queue</button>
-                </li>
-                <li><span>3) Punchmade Dev 6 Million Mixx</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Punchmade%20dev%206%20million%20mixx.mp3', 'Punchmade Dev 6 Million Mixx')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Punchmade%20dev%206%20million%20mixx.mp3', 'Punchmade Dev 6 Million Mixx')">Queue</button>
-                </li>
-                <li><span>4) li rye christian mixx</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/li%20rye%20christian%20mixx.mp3', 'li rye christian mixx')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/li%20rye%20christian%20mixx.mp3', 'li rye christian mixx')">Queue</button>
-                </li>
-                <li><span>5) New Year Same Tron Babytron Mixx</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/new%20year%20same%20tron%20babytron%20mixx.mp3', 'New Year Same Tron Babytron Mixx')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/new%20year%20same%20tron%20babytron%20mixx.mp3', 'New Year Same Tron Babytron Mixx')">Queue</button>
-                </li>
-                <li><span>6) Punchmade Dev x OT Quanny Scambruthrs Mixx</span>
-                    <button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/punchmade%20dev%20x%20ot%20quanny%20scambruthrs%20mixx.mp3', 'Punchmade Dev x OT Quanny Scambruthrs Mixx')">Play</button>
-                    <button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/punchmade%20dev%20x%20ot%20quanny%20scambruthrs%20mixx.mp3', 'Punchmade Dev x OT Quanny Scambruthrs Mixx')">Queue</button>
-                </li>
+                <li><span>1) SC</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/SC.mp3', 'St. Chroma')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/SC.mp3', 'St. Chroma')">Queue</button></li>
+                <li><span>2) RAH TAH</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/RAH%20TAH.mp3', 'Rah Tah Tah')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/RAH%20TAH.mp3', 'Rah Tah Tah')">Queue</button></li>
+                <li><span>3) NOID</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/NOID.mp3', 'Noid')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/NOID.mp3', 'Noid')">Queue</button></li>
+                <li><span>4) Darling I</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Darling%20I.mp3', 'Darling I')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Darling%20I.mp3', 'Darling I')">Queue</button></li>
+                <li><span>5) HJ</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/HJ.mp3', 'Hey Jane')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/HJ.mp3', 'Hey Jane')">Queue</button></li>
+                <li><span>6) IKY</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/IKY.mp3', 'I Killed You')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/IKY.mp3', 'I Killed You')">Queue</button></li>
+                <li><span>7) JJ</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/JJ.mp3', 'Judge Judy')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/JJ.mp3', 'Judge Judy')">Queue</button></li>
+                <li><span>8) STICKY</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/STICKY.mp3', 'Sticky')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/STICKY.mp3', 'Sticky')">Queue</button></li>
+                <li><span>9) TKYMO</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TKYMO.mp3', 'Take Your Mask Off')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TKYMO.mp3', 'Take Your Mask Off')">Queue</button></li>
+                <li><span>10) TMR</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TMR.mp3', 'Tomorrow')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TMR.mp3', 'Tomorrow')">Queue</button></li>
+                <li><span>11) TIWD</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TIWD.mp3', 'Thought I Was Dead')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/TIWD.mp3', 'Thought I Was Dead')">Queue</button></li>
+                <li><span>12) LIKE HIM</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/LIKE%20HIM.mp3', 'Like Him')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/LIKE%20HIM.mp3', 'Like Him')">Queue</button></li>
+                <li><span>13) BALLOON</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/BALLOON.mp3', 'Balloon')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/BALLOON.mp3', 'Balloon')">Queue</button></li>
+                <li><span>14) I HOPE YOU FIND YOUR</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/I%20HOPE%20YOU%20FIND%20YOUR%20WAY%20HOME.mp3', 'I Hope You Find Your Way Home')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/I%20HOPE%20YOU%20FIND%20YOUR%20WAY%20HOME.mp3', 'I Hope You Find Your Way Home')">Queue</button></li>
             </ul>
-        </section>
+        </div>
+
+        <div class="album">
+            <h2>MIXXES</h2>
+            <ul class="song-list">
+                <li><span>1) Babychiefdoit Nachos Mixx</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babychiefdoit%20nachos%20mixx%20(music%20video).mp3', 'Babychiefdoit Nachos Mixx')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babychiefdoit%20nachos%20mixx%20(music%20video).mp3', 'Babychiefdoit Nachos Mixx')">Queue</button></li>
+                <li><span>2) Babytron Hawktuah Mixx</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babytron%20Hawktuah%20mixx%20(music%20video).mp3', 'Babytron Hawktuah Mixx')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Babytron%20Hawktuah%20mixx%20(music%20video).mp3', 'Babytron Hawktuah Mixx')">Queue</button></li>
+                <li><span>3) Punchmade dev 6 Million Mixx</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Punchmade%20dev%206%20million%20mixx.mp3', 'Punchmade dev 6 Million Mixx')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/Punchmade%20dev%206%20million%20mixx.mp3', 'Punchmade dev 6 Million Mixx')">Queue</button></li>
+                <li><span>4) li rye christian mixx</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/li%20rye%20christian%20mixx.mp3', 'li rye christian mixx')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/li%20rye%20christian%20mixx.mp3', 'li rye christian mixx')">Queue</button></li>
+                <li><span>5) New Year Same Tron Babytron Mixx</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/new%20year%20same%20tron%20babytron%20mixx.mp3', 'New Year Same Tron Babytron Mixx')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/new%20year%20same%20tron%20babytron%20mixx.mp3', 'New Year Same Tron Babytron Mixx')">Queue</button></li>
+                <li><span>6) Punchmade dev x ot quanny scambruthrs mixx</span><button onclick="playSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/punchmade%20dev%20x%20ot%20quanny%20scambruthrs%20mixx.mp3', 'Punchmade dev x ot quanny scambruthrs mixx')">Play</button><button onclick="queueSong('https://raw.githubusercontent.com/wokep/HTML5-games/main/k/punchmade%20dev%20x%20ot%20quanny%20scambruthrs%20mixx.mp3', 'Punchmade dev x ot quanny scambruthrs mixx')">Queue</button></li>
+            </ul>
+        </div>
+
+        <div id="nowPlaying" style="display: none;">
+            <p id="nowPlayingText"></p>
+        </div>
+
+        <button onclick="toggleLoop()">Toggle Loop</button>
     </main>
 
-    <!-- Now Playing section -->
-    <div id="nowPlaying" style="display: none;">
-        <p id="nowPlayingText"></p>
-        <audio id="audioPlayer" controls></audio>
-        <button onclick="toggleLoop()">Toggle Loop</button>
-    </div>
-
     <footer>
-        <p>© 2024 Pandacliffy. All rights reserved.</p>
+        <p>&copy; 2024 Music Player</p>
     </footer>
 
-    <script>
-        let audioPlayer = document.getElementById("audioPlayer");
-        let nowPlayingText = document.getElementById("nowPlayingText");
-        let queue = [];
-        let isLooping = false;
+    <script src="script.js"></script>
 
-        // Function to play a song
-        function playSong(url, songName) {
-            audioPlayer.src = url; // Set audio source to the song URL
-            audioPlayer.play(); // Start playing the song
-            nowPlayingText.innerHTML = "Now Playing: " + songName; // Display current song
-            document.getElementById("nowPlaying").style.display = "block"; // Show the Now Playing section
-        }
-
-        // Function to queue a song
-        function queueSong(url, songName) {
-            queue.push({ url, songName });
-            console.log("Added to queue: " + songName);
-            alert("Added to queue: " + songName);
-        }
-
-        // Function to toggle the loop feature
-        function toggleLoop() {
-            isLooping = !isLooping;
-            audioPlayer.loop = isLooping;
-            alert("Loop is now " + (isLooping ? "enabled" : "disabled"));
-        }
-    </script>
 </body>
 </html>
