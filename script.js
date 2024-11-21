@@ -1,12 +1,14 @@
 let audioPlayer = document.getElementById('audioPlayer');
+let audioSource = document.getElementById('audioSource');
 let currentSongElement = document.getElementById('currentSong');
-let songQueue = [];
 let isPlaying = false;
+let songQueue = [];
 
 // Function to play a song
 function playSong(songUrl) {
     if (audioPlayer.src !== songUrl || !isPlaying) {
-        audioPlayer.src = songUrl;
+        audioSource.src = songUrl;
+        audioPlayer.load();
         audioPlayer.play();
         currentSongElement.textContent = songUrl.split('/').pop().replace('%20', ' ').replace('.mp3', '');
         isPlaying = true;
