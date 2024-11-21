@@ -1,37 +1,67 @@
-let audioPlayer = document.getElementById('audioPlayer');
-let audioSource = document.getElementById('audioSource');
-let currentSongElement = document.getElementById('currentSong');
-let isPlaying = false;
+let audioPlayer = document.getElementById("audioPlayer");
+let audioSource = document.getElementById("audioSource");
+let currentSongElement = document.getElementById("currentSong");
 let songQueue = [];
+let isLooping = false;  // Looping state
 
-// Function to play a song
+// Play a song
 function playSong(songUrl) {
-    if (audioPlayer.src !== songUrl || !isPlaying) {
-        audioSource.src = songUrl;
-        audioPlayer.load();
-        audioPlayer.play();
-        currentSongElement.textContent = songUrl.split('/').pop().replace('%20', ' ').replace('.mp3', '');
-        isPlaying = true;
-    } else {
-        audioPlayer.pause();
-        isPlaying = false;
-        currentSongElement.textContent = 'Paused';
-    }
+    audioSource.src = songUrl;
+    audioPlayer.load();  // Load the new song
+    audioPlayer.play();
+    currentSongElement.innerText = songUrl.split('/').pop().split('.')[0];  // Display song name
+
+    // Reset loop to false each time a new song starts
+    isLooping = false;
+    document.getElementById("loopButton").textContent = "Loop: Off";
 }
 
-// Function to add a song to the queue
+// Queue a song
 function queueSong(songUrl) {
     if (!songQueue.includes(songUrl)) {
         songQueue.push(songUrl);
-        alert(`Song "${songUrl.split('/').pop().replace('%20', ' ')}" added to the queue!`);
-    } else {
-        alert("This song is already in the queue.");
     }
 }
 
-// Automatically play next song in queue when the current song ends
-audioPlayer.addEventListener('ended', () => {
-    if (songQueue.length > 0) {
-        playSong(songQueue.shift());
+// Loop toggle function
+function toggleLoop() {
+    isLooping = !isLooping;
+    if (isLooping) {
+        audioPlayer.loop = true;
+        document.getElementById("loopButton").textContent = "Loop: On";
+    } else {
+        audioPlayer.loop = false;
+        document.getElementById("loopButton").textContent = "Loop: Off";
+    }
+}
+
+// Event listener for when song ends
+audioPlayer.addEventListener('ended', function () {
+    if (!isLooping && songQueue.length > 0) {
+        let nextSong = songQueue.shift();  // Get next song from queue
+        playSong(nextSong);  // Play next song in the queue
     }
 });
+
+// Function to play the next song in the queue
+function playNextSong() {
+    if (songQueue.length > 0) {
+        let nextSong = songQueue.shift();
+        playSong(nextSong);
+    }
+}
+
+// Function to display the current song time on the audio bar
+audioPlayer.addEventListener('timeupdate', function () {
+    let currentTime = audioPlayer.currentTime;
+    let duration = audioPlayer.duration;
+    let progress = (currentTime / duration) * 100;
+    document.getElementById("audioPlayer").style.setProperty('--progress', `${progress}%`);
+});
+
+// Create and set the loop button
+let loopButton = document.createElement("button");
+loopButton.id = "loopButton";
+loopButton.textContent = "Loop: Off";
+loopButton.onclick = toggleLoop;
+document.body.appendChild(loopButton);
