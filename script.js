@@ -1,24 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll(".tabs a");
-    const sections = document.querySelectorAll(".content");
+let audioPlayer = new Audio();
+let nowPlayingText = document.getElementById("nowPlayingText");
+let queue = [];
+let isLooping = false;
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", event => {
-            event.preventDefault();
-
-            // Deactivate all tabs and sections
-            tabs.forEach(t => t.classList.remove("active"));
-            sections.forEach(section => section.classList.remove("active"));
-
-            // Activate the clicked tab and corresponding section
-            tab.classList.add("active");
-            const target = document.querySelector(tab.getAttribute("href"));
-            if (target) target.classList.add("active");
-        });
+// Function to play a song
+function playSong(url, songName) {
+    audioPlayer.src = url; // Set audio source to the song URL
+    audioPlayer.play(); // Start playing the song
+    nowPlayingText.innerHTML = "Now Playing: " + songName; // Display current song
+    document.getElementById("nowPlaying").style.display = "block"; // Show the Now Playing section
+    audioPlayer.addEventListener('ended', function() {
+        if (queue.length > 0) {
+            let nextSong = queue.shift(); // Get the next song from the queue
+            playSong(nextSong.url, nextSong.songName); // Play the next song
+        }
     });
+}
 
-    // Activate the first tab by default
-    tabs[0].classList.add("active");
-    sections[0].classList.add("active");
-});
+// Function to queue a song
+function queueSong(url, songName) {
+    queue.push({ url, songName });
+    alert("Added to queue: " + songName);
+}
 
+// Function to toggle the loop feature
+function toggleLoop() {
+    isLooping = !isLooping;
+    audioPlayer.loop = isLooping;
+    alert("Loop is now " + (isLooping ? "enabled" : "disabled"));
+}
