@@ -1,31 +1,47 @@
-let audioPlayer = new Audio();
-let nowPlayingText = document.getElementById("nowPlayingText");
-let queue = [];
+// JavaScript to handle the play functionality
+
+// Get all the play buttons
+const playButtons = document.querySelectorAll('.play-button');
+const audioElement = document.getElementById('audio-player');
+const nowPlayingText = document.getElementById('nowPlayingText');
 let isLooping = false;
 
-// Function to play a song
-function playSong(url, songName) {
-    audioPlayer.src = url; // Set audio source to the song URL
-    audioPlayer.play(); // Start playing the song
-    nowPlayingText.innerHTML = "Now Playing: " + songName; // Display current song
-    document.getElementById("nowPlaying").style.display = "block"; // Show the Now Playing section
-    audioPlayer.addEventListener('ended', function() {
-        if (queue.length > 0) {
-            let nextSong = queue.shift(); // Get the next song from the queue
-            playSong(nextSong.url, nextSong.songName); // Play the next song
-        }
-    });
+// Function to handle song play
+function playSong(songUrl, songName) {
+    if (audioElement.src !== songUrl) {
+        audioElement.src = songUrl;
+        audioElement.play();
+        nowPlayingText.innerText = `Now Playing: ${songName}`;
+    } else if (audioElement.paused) {
+        audioElement.play();
+        nowPlayingText.innerText = `Now Playing: ${songName}`;
+    } else {
+        audioElement.pause();
+    }
 }
 
-// Function to queue a song
-function queueSong(url, songName) {
-    queue.push({ url, songName });
-    alert("Added to queue: " + songName);
-}
-
-// Function to toggle the loop feature
+// Loop toggle
 function toggleLoop() {
     isLooping = !isLooping;
-    audioPlayer.loop = isLooping;
-    alert("Loop is now " + (isLooping ? "enabled" : "disabled"));
+    audioElement.loop = isLooping;
+    if (isLooping) {
+        alert('Loop is ON');
+    } else {
+        alert('Loop is OFF');
+    }
 }
+
+// Add event listeners for each play button
+playButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const songUrl = button.getAttribute('data-url');
+        const songName = button.getAttribute('data-song');
+        playSong(songUrl, songName);
+    });
+});
+
+// Initialize the audio player
+const audioPlayer = document.createElement('audio');
+audioPlayer.id = 'audio-player';
+audioPlayer.style.display = 'none';
+document.body.appendChild(audioPlayer);
