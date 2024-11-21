@@ -105,6 +105,7 @@
     <div id="nowPlaying" style="display: none;">
         <p id="nowPlayingText"></p>
         <audio id="audioPlayer" controls></audio>
+        <button onclick="toggleLoop()">Toggle Loop</button>
     </div>
 
     <footer>
@@ -114,6 +115,8 @@
     <script>
         let audioPlayer = document.getElementById("audioPlayer");
         let nowPlayingText = document.getElementById("nowPlayingText");
+        let queue = [];
+        let isLooping = false;
 
         // Function to play a song
         function playSong(url, songName) {
@@ -123,9 +126,18 @@
             document.getElementById("nowPlaying").style.display = "block"; // Show the Now Playing section
         }
 
-        // Function to queue a song (just adds to console for now)
+        // Function to queue a song
         function queueSong(url, songName) {
+            queue.push({ url, songName });
             console.log("Added to queue: " + songName);
+            alert("Added to queue: " + songName);
+        }
+
+        // Function to toggle the loop feature
+        function toggleLoop() {
+            isLooping = !isLooping;
+            audioPlayer.loop = isLooping;
+            alert("Loop is now " + (isLooping ? "enabled" : "disabled"));
         }
     </script>
 </body>
