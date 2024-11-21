@@ -3,77 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PandaCliffy - Songs</title>
+    <title>Songs - Pandacliffy</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e1e;
+            color: #eee;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 1em 0;
+            background: #2c2c2c;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav a {
+            margin: 0 10px;
+            color: #ccc;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        main {
+            padding: 1em;
+        }
+        .album {
+            margin-bottom: 2em;
+        }
+        .album h2 {
+            border-bottom: 2px solid #444;
+            padding-bottom: 0.5em;
+        }
+        .song-list li {
+            margin: 0.5em 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background: #444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #666;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background: #2c2c2c;
+        }
+        #nowPlaying {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #111;
+            padding: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
+        }
+        #songTitle {
+            font-size: 1.2em;
+        }
+        #progressContainer {
+            flex-grow: 1;
+            margin: 0 10px;
+            position: relative;
+        }
+        #progressBar {
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #progress {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            border-radius: 5px;
+        }
+        #timeDisplay {
+            min-width: 120px;
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>PandaCliffy - Songs</h1>
+        <h1>Songs</h1>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="games.html">Games</a></li>
-                <li><a href="movies.html">Movies</a></li>
-                <li><a href="chat.html">Chat</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="study.html">Study</a>
+            <a href="movies.html">Movies</a>
+            <a href="shows.html">Shows</a>
         </nav>
     </header>
-
     <main>
-        <h2>Music Collection</h2>
-        <section class="song-list">
-            <div class="song-item">
-                <p>Babychiefdoit nachos mixx (music video)</p>
-                <audio controls>
-                    <source src="k/Babychiefdoit%20nachos%20mixx%20(music%20video).mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-
-            <div class="song-item">
-                <p>Babytron Hawktuah mixx (music video)</p>
-                <audio controls>
-                    <source src="k/Babytron%20Hawktuah%20mixx%20(music%20video).mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-
-            <div class="song-item">
-                <p>Punchmade dev 6 million mixx</p>
-                <audio controls>
-                    <source src="k/Punchmade%20dev%206%20million%20mixx.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-
-            <div class="song-item">
-                <p>li rye christian mixx</p>
-                <audio controls>
-                    <source src="k/li%20rye%20christian%20mixx.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-
-            <div class="song-item">
-                <p>new year same tron babytron mixx</p>
-                <audio controls>
-                    <source src="k/new%20year%20same%20tron%20babytron%20mixx.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-
-            <div class="song-item">
-                <p>Punchmade dev x ot quanny scambruthrs mixx</p>
-                <audio controls>
-                    <source src="k/punchmade%20dev%20x%20ot%20quanny%20scambruthrs%20mixx.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
+        <!-- CHROMAKOPIA Album -->
+        <section class="album">
+            <h2>Album: CHROMAKOPIA</h2>
+            <ul class="song-list">
+                <li><span>1. St. Chroma</span>
+                    <button onclick="playSong('k/St.%20Chroma.mp3', 'St. Chroma')">Play</button>
+                    <button onclick="queueSong('k/St.%20Chroma.mp3', 'St. Chroma')">Queue</button>
+                </li>
+                <li><span>2. Rah Tah Tah</span>
+                    <button onclick="playSong('k/Rah%20Tah%20Tah.mp3', 'Rah Tah Tah')">Play</button>
+                    <button onclick="queueSong('k/Rah%20Tah%20Tah.mp3', 'Rah Tah Tah')">Queue</button>
+                </li>
+                <!-- Add more songs here -->
+            </ul>
         </section>
     </main>
-
+    <div id="nowPlaying" style="display: none;">
+        <span id="songTitle">No song playing</span>
+        <div id="progressContainer" onclick="seek(event)">
+            <div id="progressBar">
+                <div id="progress"></div>
+            </div>
+        </div>
+        <span id="timeDisplay">0:00 / 0:00</span>
+    </div>
     <footer>
-        <p>&copy; 2024 PandaCliffy. All rights reserved.</p>
+        <p>© 2024 Pandacliffy. All rights reserved.</p>
     </footer>
+
+    <audio id="audioPlayer"></audio>
+    <script>
+        let queue = [];
+        let currentSong = null;
+        const audioPlayer = document.getElementById("audioPlayer");
+        const nowPlaying = document.getElementById("nowPlaying");
+        const songTitle = document.getElementById("songTitle");
+        const progressBar = document.getElementById("progressBar");
+        const progress = document.getElementById("progress");
+        const timeDisplay = document.getElementById("timeDisplay");
+
+        function playSong(songPath, title) {
+            currentSong = { path: songPath, title };
+            audioPlayer.src = songPath;
+            audioPlayer.play();
+            updateNowPlaying(title);
+        }
+
+        function queueSong(songPath, title) {
+            queue.push({ path: songPath, title });
+            alert(`Queued: ${title}`);
+        }
+
+        function updateNowPlaying(title) {
+            nowPlaying.style.display = "flex";
+            songTitle.textContent = title;
+            updateProgress();
+        }
+
+        audioPlayer.addEventListener("ended", () => {
+            if (queue.length > 0) {
+                const nextSong = queue.shift();
+                playSong(nextSong.path, nextSong.title);
+            } else {
+                nowPlaying.style.display = "none";
+            }
+        });
+
+        audioPlayer.addEventListener("timeupdate", updateProgress);
+
+        function updateProgress() {
+            const duration = audioPlayer.duration || 0;
+            const currentTime = audioPlayer.currentTime || 0;
+            const progressPercent = (currentTime / duration) * 100 || 0;
+
+            progress.style.width = `${progressPercent}%`;
+
+            const formatTime = (time) => {
+                const minutes = Math.floor(time / 60);
+                const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+                return `${minutes}:${seconds}`;
+            };
+
+            timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        }
+
+        function seek(event) {
+            const rect = progressBar.getBoundingClientRect();
+            const offsetX = event.clientX - rect.left;
+            const seekTime = (offsetX / rect.width) * audioPlayer.duration;
+            audioPlayer.currentTime = seekTime;
+        }
+    </script>
 </body>
 </html>
