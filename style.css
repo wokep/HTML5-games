@@ -85,7 +85,7 @@ h2 {
 }
 
 .play-button, .queue-button {
-    background-color: #ffffff;
+    background-color: #888; /* Grey buttons */
     border: none;
     padding: 8px 15px;
     margin-left: 10px;
@@ -96,7 +96,7 @@ h2 {
 }
 
 .play-button:hover, .queue-button:hover {
-    background-color: #f1f1f1;
+    background-color: #666; /* Darker grey when hovered */
 }
 
 /* Audio Controls Styling */
