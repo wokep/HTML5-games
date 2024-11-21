@@ -22,59 +22,59 @@
         <section class="album">
             <h2>Album: CHROMAKOPIA</h2>
             <ul class="song-list">
-                <li><span>1. St. Chroma</span>
+                <li><span>1) St. Chroma</span>
                     <button onclick="playSong('k/St.%20Chroma.mp3', 'St. Chroma')">Play</button>
                     <button onclick="queueSong('k/St.%20Chroma.mp3', 'St. Chroma')">Queue</button>
                 </li>
-                <li><span>2. Rah Tah Tah</span>
+                <li><span>2) Rah Tah Tah</span>
                     <button onclick="playSong('k/Rah%20Tah%20Tah.mp3', 'Rah Tah Tah')">Play</button>
                     <button onclick="queueSong('k/Rah%20Tah%20Tah.mp3', 'Rah Tah Tah')">Queue</button>
                 </li>
-                <li><span>3. Noid</span>
+                <li><span>3) Noid</span>
                     <button onclick="playSong('k/Noid.mp3', 'Noid')">Play</button>
                     <button onclick="queueSong('k/Noid.mp3', 'Noid')">Queue</button>
                 </li>
-                <li><span>4. Darling, I</span>
+                <li><span>4) Darling, I</span>
                     <button onclick="playSong('k/Darling,%20I.mp3', 'Darling, I')">Play</button>
                     <button onclick="queueSong('k/Darling,%20I.mp3', 'Darling, I')">Queue</button>
                 </li>
-                <li><span>5. Hey Jane</span>
+                <li><span>5) Hey Jane</span>
                     <button onclick="playSong('k/Hey%20Jane.mp3', 'Hey Jane')">Play</button>
                     <button onclick="queueSong('k/Hey%20Jane.mp3', 'Hey Jane')">Queue</button>
                 </li>
-                <li><span>6. I Killed You</span>
+                <li><span>6) I Killed You</span>
                     <button onclick="playSong('k/I%20Killed%20You.mp3', 'I Killed You')">Play</button>
                     <button onclick="queueSong('k/I%20Killed%20You.mp3', 'I Killed You')">Queue</button>
                 </li>
-                <li><span>7. Judge Judy</span>
+                <li><span>7) Judge Judy</span>
                     <button onclick="playSong('k/Judge%20Judy.mp3', 'Judge Judy')">Play</button>
                     <button onclick="queueSong('k/Judge%20Judy.mp3', 'Judge Judy')">Queue</button>
                 </li>
-                <li><span>8. Sticky</span>
+                <li><span>8) Sticky</span>
                     <button onclick="playSong('k/Sticky.mp3', 'Sticky')">Play</button>
                     <button onclick="queueSong('k/Sticky.mp3', 'Sticky')">Queue</button>
                 </li>
-                <li><span>9. Take Your Mask Off</span>
+                <li><span>9) Take Your Mask Off</span>
                     <button onclick="playSong('k/Take%20Your%20Mask%20Off.mp3', 'Take Your Mask Off')">Play</button>
                     <button onclick="queueSong('k/Take%20Your%20Mask%20Off.mp3', 'Take Your Mask Off')">Queue</button>
                 </li>
-                <li><span>10. Tomorrow</span>
+                <li><span>10) Tomorrow</span>
                     <button onclick="playSong('k/Tomorrow.mp3', 'Tomorrow')">Play</button>
                     <button onclick="queueSong('k/Tomorrow.mp3', 'Tomorrow')">Queue</button>
                 </li>
-                <li><span>11. Thought I Was Dead</span>
+                <li><span>11) Thought I Was Dead</span>
                     <button onclick="playSong('k/Thought%20I%20Was%20Dead.mp3', 'Thought I Was Dead')">Play</button>
                     <button onclick="queueSong('k/Thought%20I%20Was%20Dead.mp3', 'Thought I Was Dead')">Queue</button>
                 </li>
-                <li><span>12. Like Him</span>
+                <li><span>12) Like Him</span>
                     <button onclick="playSong('k/Like%20Him.mp3', 'Like Him')">Play</button>
                     <button onclick="queueSong('k/Like%20Him.mp3', 'Like Him')">Queue</button>
                 </li>
-                <li><span>13. Balloon</span>
+                <li><span>13) Balloon</span>
                     <button onclick="playSong('k/Balloon.mp3', 'Balloon')">Play</button>
                     <button onclick="queueSong('k/Balloon.mp3', 'Balloon')">Queue</button>
                 </li>
-                <li><span>14. I Hope You Find Your Way Home</span>
+                <li><span>14) I Hope You Find Your Way Home</span>
                     <button onclick="playSong('k/I%20Hope%20You%20Find%20Your%20Way%20Home.mp3', 'I Hope You Find Your Way Home')">Play</button>
                     <button onclick="queueSong('k/I%20Hope%20You%20Find%20Your%20Way%20Home.mp3', 'I Hope You Find Your Way Home')">Queue</button>
                 </li>
@@ -113,14 +113,13 @@
         </section>
     </main>
     <div id="nowPlaying" style="display: none;">
-        <!-- Now Playing UI remains the same -->
+        <p id="nowPlayingText"></p>
+        <audio id="audioPlayer" controls></audio>
     </div>
     <footer>
         <p>© 2024 Pandacliffy. All rights reserved.</p>
     </footer>
 
-    <script>
-        // JavaScript code remains unchanged
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
