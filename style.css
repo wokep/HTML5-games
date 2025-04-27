@@ -1,131 +1,123 @@
-/* General Body Styling */
-body {
-    background-color: #1c1c1c; /* Blackish grey */
-    color: #e0e0e0; /* Light grey text */
-    font-family: Arial, sans-serif;
+/* Reset & General */
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    background-color: #0f0f0f; /* true dark */
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
 }
 
-/* Header Styling */
+/* Header */
 header {
-    background-color: #333;
+    background: linear-gradient(90deg, #6a0dad, #9b30ff);
     color: white;
-    padding: 15px 0;
-    text-align: center;
     width: 100%;
-    font-size: 24px;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 28px;
     font-weight: bold;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(160, 32, 240, 0.5);
+    letter-spacing: 1px;
 }
 
 /* Now Playing Section */
 #nowPlaying {
-    background-color: #262626;
-    color: #e0e0e0;
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin: 20px;
-    font-size: 18px;
-    font-weight: bold;
+    background-color: #1a1a1a;
+    color: #d4d4d4;
+    border: 2px solid #6a0dad;
+    border-radius: 12px;
+    padding: 15px 30px;
+    margin: 30px 0 20px;
+    font-size: 20px;
+    font-weight: 600;
     text-align: center;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px #6a0dad55;
 }
 
-/* Container for Songs */
+/* Song Container */
 .song-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 20px 0;
-    gap: 15px;
-    width: 100%;
+    gap: 20px;
+    width: 95%;
+    margin-bottom: 30px;
 }
 
-/* Individual Song Boxes */
+/* Song Box */
 .song-box {
-    background-color: #2d2d2d; /* Slightly lighter grey for contrast */
-    padding: 15px;
+    background: #191919;
+    border: 2px solid #6a0dad88;
+    border-radius: 15px;
+    padding: 20px;
     width: 220px;
-    border-radius: 10px;
-    text-align: left;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #f5f5f5;
-}
-
-/* Song Name Text */
-.song-name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
     text-align: center;
+    box-shadow: 0 4px 20px rgba(160, 32, 240, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Play & Queue Buttons */
+.song-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 25px rgba(160, 32, 240, 0.4);
+}
+
+/* Song Name */
+.song-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
 button {
-    background-color: #b0b0b0; /* Light grey */
-    color: #333;
+    background: linear-gradient(90deg, #6a0dad, #9b30ff);
+    color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 10px 20px;
     font-size: 16px;
-    margin: 5px 0;
+    margin: 6px 0;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s, transform 0.2s;
     width: 100%;
 }
 
-/* Hover effect for buttons */
 button:hover {
-    background-color: #d0d0d0;
+    background: linear-gradient(90deg, #7d2ae8, #b16cff);
+    transform: scale(1.05);
 }
 
-/* Loop Button */
+/* Loop Button (reuse button styles) */
 #loopButton {
-    background-color: #b0b0b0;
-    color: #333;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    margin: 10px 0;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    background: linear-gradient(90deg, #6a0dad, #9b30ff);
 }
 
-#loopButton:hover {
-    background-color: #d0d0d0;
-}
-
-/* Audio Player Styling */
+/* Audio Player */
 #audioPlayer {
     width: 90%;
     max-width: 500px;
-    margin: 15px 0;
-    background-color: #333;
-    border-radius: 10px;
-    color: #e0e0e0;
-    padding: 5px;
+    margin: 20px 0;
+    background-color: #1a1a1a;
+    border: 2px solid #6a0dad;
+    border-radius: 12px;
+    padding: 10px;
 }
 
-/* Footer Styling */
+/* Footer */
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 20px 0;
     margin-top: auto;
-    background-color: #333;
-    color: white;
+    background-color: #191919;
+    color: #aaa;
     width: 100%;
     font-size: 14px;
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -4px 20px rgba(160, 32, 240, 0.3);
 }
