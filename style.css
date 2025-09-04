@@ -90,7 +90,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(90deg, #7d2ae8, #b16cff);
+    background: linear-gradient(90deg, #e9e7e4, #b16cff);
     transform: scale(1.05);
 }
 
@@ -105,7 +105,7 @@ button:hover {
     max-width: 500px;
     margin: 20px 0;
     background-color: #1a1a1a;
-    border: 2px solid #6a0dad;
+    border: 2px solid #e9e7e4;
     border-radius: 12px;
     padding: 10px;
 }
@@ -115,7 +115,7 @@ footer {
     text-align: center;
     padding: 20px 0;
     margin-top: auto;
-    background-color: #191919;
+    background-color: #e9e7e4;
     color: #aaa;
     width: 100%;
     font-size: 14px;
