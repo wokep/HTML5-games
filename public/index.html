@@ -1,0 +1,58 @@
+<!-- public/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pandacliffy — Browser</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#f6f7fb; }
+    header { padding:14px; background:#0f172a; color:white; }
+    .toolbar { display:flex; gap:8px; padding:10px; background:white; align-items:center; border-bottom:1px solid #e5e7eb; }
+    .toolbar input[type="text"] { flex:1; padding:8px; border:1px solid #d1d5db; border-radius:6px; }
+    .toolbar button { padding:8px 12px; border-radius:6px; border:1px solid #cbd5e1; background:#eef2ff; cursor:pointer; }
+    iframe { width:100%; height:78vh; border:0; display:block; }
+    .note { padding:12px; font-size:0.9rem; color:#374151; }
+  </style>
+</head>
+<body>
+  <header><h1 style="margin:0">Pandacliffy — Browser</h1></header>
+
+  <div class="toolbar">
+    <input id="address" placeholder="Enter site URL (e.g. https://open.spotify.com)" />
+    <button id="go">Open</button>
+    <select id="quick" title="Quick open">
+      <option value="">Quick open…</option>
+      <option value="https://open.spotify.com">Spotify</option>
+      <option value="https://www.wikipedia.org">Wikipedia</option>
+      <option value="https://www.khanacademy.org">Khan Academy</option>
+    </select>
+  </div>
+
+  <div class="note">
+    Only approved sites will open. If a site refuses to be embedded it may show blank or prevent framing.
+  </div>
+
+  <!-- initial blank page -->
+  <iframe id="viewer" src="/blank.html"></iframe>
+
+  <script>
+    const address = document.getElementById('address');
+    const go = document.getElementById('go');
+    const viewer = document.getElementById('viewer');
+    const quick = document.getElementById('quick');
+
+    function openUrl(raw) {
+      if (!raw) return;
+      let url = raw.trim();
+      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+      // send to server /open which enforces whitelist
+      viewer.src = '/open?url=' + encodeURIComponent(url);
+    }
+
+    go.addEventListener('click', ()=> openUrl(address.value));
+    address.addEventListener('keydown', e => { if (e.key === 'Enter') openUrl(address.value); });
+    quick.addEventListener('change', ()=> { if (quick.value) { address.value = quick.value; openUrl(quick.value); }});
+  </script>
+</body>
+</html>
