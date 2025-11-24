@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Dash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #00ff00, #0066ff, #9933ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .menu, .level-select, .shop, .leaderboard, .game-over {
+            display: none;
+        }
+
+        .menu.active, .level-select.active, .shop.active, .leaderboard.active, .game-over.active {
+            display: block;
+        }
+
+        button {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            margin: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        button.blue { background: #0066ff; color: #fff; }
+        button.yellow { background: #ffd700; color: #000; }
+        button.red { background: #ff0000; color: #fff; }
+        button.gray { background: #666; color: #fff; }
+
+        #gameCanvas {
+            border: 4px solid #333;
+            display: none;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+
+        #gameCanvas.active {
+            display: block;
+        }
+
+        .stats {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .level-grid, .skin-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .skin-grid {
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .level-btn, .skin-card {
+            background: #222;
+            border: 2px solid #444;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .level-btn:hover, .skin-card:hover {
+            background: #333;
+            border-color: #fff;
+        }
+
+        .level-btn.selected, .skin-card.selected {
+            border-color: #00ff00;
+            background: #2a2a2a;
+        }
+
+        .skin-preview {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+            border-radius: 5px;
+        }
+
+        .leaderboard-list {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 2px solid #444;
+            background: #222;
+            color: #fff;
+            margin: 10px;
+        }
+
+        .controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .game-stats {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #222;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Menu -->
+        <div class="menu active">
+            <h1>GEOMETRY DASH</h1>
+            <div>
+                <button onclick="showLevels()">▶ PLAY GAME</button><br>
+                <button class="blue" onclick="showShop()">🛒 SHOP (Coins: <span id="coinDisplay">0</span>)</button><br>
+                <button class="yellow" onclick="showLeaderboard()">🏆 LEADERBOARD</button><br>
+                <input type="text" id="playerName" placeholder="Enter your name" maxlength="15">
+            </div>
+        </div>
+
+        <!-- Level Select -->
+        <div class="level-select">
+            <h2>SELECT LEVEL</h2>
+            <div class="level-grid" id="levelGrid"></div>
+            <button onclick="startGame()">START</button>
+            <button class="gray" onclick="showMenu()">BACK</button>
+        </div>
+
+        <!-- Shop -->
+        <div class="shop">
+            <h2>SKIN SHOP</h2>
+            <p class="stats">Coins: <span id="shopCoins">0</span></p>
+            <div class="skin-grid" id="skinGrid"></div>
+            <button class="gray" onclick="showMenu()">BACK</button>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard">
+            <h2>LEADERBOARD</h2>
+            <div class="leaderboard-list" id="leaderboardList"></div>
+            <button class="gray" onclick="showMenu()">BACK</button>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div class="controls">
+            Controls:<br>
+            SPACE/CLICK - Jump<br>
+            W/↑ - Fly
+        </div>
+        <div class="game-stats">
+            Score: <span id="scoreDisplay">0</span><br>
+            Level: <span id="levelDisplay">Tutorial</span>
+        </div>
+
+        <!-- Game Over -->
+        <div class="game-over">
+            <h2 style="color: #ff0000;">GAME OVER</h2>
+            <div class="stats">
+                <p>Score: <span id="finalScore">0</span></p>
+                <p style="color: #ffd700;">High Score: <span id="finalHighScore">0</span></p>
+                <p style="color: #00ff00;">+<span id="earnedCoins">0</span> Coins</p>
+            </div>
+            <button onclick="startGame()">RETRY</button>
+            <button class="blue" onclick="showLevels()">CHANGE LEVEL</button>
+            <button class="gray" onclick="showMenu()">MAIN MENU</button>
+        </div>
+    </div>
+
+    <script>
+        // Game state
+        let gameState = 'menu';
+        let score = 0;
+        let highScore = 0;
+        let coins = 0;
+        let selectedSkin = 0;
+        let unlockedSkins = [0];
+        let selectedLevel = 0;
+        let playerName = 'Player';
+        let leaderboard = [];
+        let animationId = null;
+
+        // Game objects
+        let player = {
+            x: 100, y: 300, width: 30, height: 30,
+            velocityY: 0, gravity: 0.8, jumpPower: -15,
+            isJumping: false, isFlying: false, rotation: 0
+        };
+        let obstacles = [];
+        let particles = [];
+        let gameSpeed = 5;
+        let distance = 0;
+
+        // Canvas setup
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Skins data
+        const skins = [
+            { id: 0, name: 'Classic', color: '#00ff00', price: 0, shape: 'cube' },
+            { id: 1, name: 'Red Cube', color: '#ff0000', price: 50, shape: 'cube' },
+            { id: 2, name: 'Blue Cube', color: '#0066ff', price: 50, shape: 'cube' },
+            { id: 3, name: 'Purple', color: '#9933ff', price: 100, shape: 'cube' },
+            { id: 4, name: 'Gold', color: '#ffd700', price: 150, shape: 'cube' },
+            { id: 5, name: 'Pink', color: '#ff69b4', price: 100, shape: 'cube' },
+            { id: 6, name: 'Cyan', color: '#00ffff', price: 100, shape: 'cube' },
+            { id: 7, name: 'Orange', color: '#ff8800', price: 150, shape: 'cube' },
+            { id: 8, name: 'Rainbow', color: 'rainbow', price: 300, shape: 'cube' },
+            { id: 9, name: 'Diamond', color: '#b9f2ff', price: 500, shape: 'cube' },
+            { id: 10, name: 'Red Ball', color: '#ff0000', price: 100, shape: 'circle' },
+            { id: 11, name: 'Blue Ball', color: '#0066ff', price: 100, shape: 'circle' },
+            { id: 12, name: 'Green Ball', color: '#00ff00', price: 100, shape: 'circle' },
+            { id: 13, name: 'Yellow Ball', color: '#ffff00', price: 150, shape: 'circle' },
+            { id: 14, name: 'Purple Ball', color: '#9933ff', price: 150, shape: 'circle' },
+            { id: 15, name: 'Gold Ball', color: '#ffd700', price: 200, shape: 'circle' },
+            { id: 16, name: 'Rainbow Ball', color: 'rainbow', price: 400, shape: 'circle' },
+            { id: 17, name: 'Red Ship', color: '#ff0000', price: 150, shape: 'triangle' },
+            { id: 18, name: 'Blue Ship', color: '#0066ff', price: 150, shape: 'triangle' },
+            { id: 19, name: 'Green Ship', color: '#00ff00', price: 150, shape: 'triangle' },
+            { id: 20, name: 'Purple Ship', color: '#9933ff', price: 200, shape: 'triangle' },
+            { id: 21, name: 'Gold Ship', color: '#ffd700', price: 250, shape: 'triangle' },
+            { id: 22, name: 'Rainbow Ship', color: 'rainbow', price: 500, shape: 'triangle' },
+            { id: 23, name: 'Neon', color: '#39ff14', price: 200, shape: 'cube' },
+            { id: 24, name: 'Magenta', color: '#ff00ff', price: 200, shape: 'cube' },
+            { id: 25, name: 'Lime', color: '#ccff00', price: 250, shape: 'circle' },
+            { id: 26, name: 'Turquoise', color: '#40e0d0', price: 250, shape: 'circle' },
+            { id: 27, name: 'Coral', color: '#ff7f50', price: 300, shape: 'triangle' },
+            { id: 28, name: 'Lavender', color: '#e6e6fa', price: 300, shape: 'triangle' },
+            { id: 29, name: 'Crimson', color: '#dc143c', price: 350, shape: 'cube' },
+            { id: 30, name: 'Teal', color: '#008080', price: 350, shape: 'circle' },
+            { id: 31, name: 'Indigo', color: '#4b0082', price: 400, shape: 'triangle' },
+            { id: 32, name: 'Chrome', color: '#c0c0c0', price: 600, shape: 'cube' },
+            { id: 33, name: 'Emerald', color: '#50c878', price: 700, shape: 'circle' },
+            { id: 34, name: 'Legendary', color: 'legendary', price: 1000, shape: 'triangle' }
+        ];
+
+        // Levels data
+        const levels = [
+            { id: 0, name: 'Tutorial', difficulty: 'Easy', speed: 4, freq: 120, color: '#00ff00' },
+            { id: 1, name: 'First Steps', difficulty: 'Easy', speed: 5, freq: 110, color: '#00ff00' },
+            { id: 2, name: 'Jump Jump', difficulty: 'Easy', speed: 5, freq: 100, color: '#00ff00' },
+            { id: 3, name: 'Speed Run', difficulty: 'Medium', speed: 6, freq: 90, color: '#ffff00' },
+            { id: 4, name: 'Sky High', difficulty: 'Medium', speed: 6, freq: 85, color: '#ffff00' },
+            { id: 5, name: 'Obstacles', difficulty: 'Medium', speed: 7, freq: 80, color: '#ffff00' },
+            { id: 6, name: 'Fast Lane', difficulty: 'Medium', speed: 7, freq: 75, color: '#ffff00' },
+            { id: 7, name: 'Danger Zone', difficulty: 'Hard', speed: 8, freq: 70, color: '#ff8800' },
+            { id: 8, name: 'Hell Fire', difficulty: 'Hard', speed: 8, freq: 65, color: '#ff8800' },
+            { id: 9, name: 'Death Valley', difficulty: 'Hard', speed: 9, freq: 60, color: '#ff8800' },
+            { id: 10, name: 'Insane', difficulty: 'Insane', speed: 9, freq: 55, color: '#ff0000' },
+            { id: 11, name: 'Nightmare', difficulty: 'Insane', speed: 10, freq: 50, color: '#ff0000' },
+            { id: 12, name: 'Speed Demon', difficulty: 'Insane', speed: 10, freq: 48, color: '#ff0000' },
+            { id: 13, name: 'Ultimate', difficulty: 'Insane', speed: 11, freq: 45, color: '#ff0000' },
+            { id: 14, name: 'Chaos', difficulty: 'Extreme', speed: 11, freq: 43, color: '#ff00ff' },
+            { id: 15, name: 'Extreme Pain', difficulty: 'Extreme', speed: 12, freq: 40, color: '#ff00ff' },
+            { id: 16, name: 'Impossible', difficulty: 'Extreme', speed: 12, freq: 38, color: '#ff00ff' },
+            { id: 17, name: 'Master', difficulty: 'Extreme', speed: 13, freq: 36, color: '#ff00ff' },
+            { id: 18, name: 'Legend Path', difficulty: 'Legendary', speed: 13, freq: 34, color: '#ffd700' },
+            { id: 19, name: 'God Mode', difficulty: 'Legendary', speed: 14, freq: 32, color: '#ffd700' },
+            { id: 20, name: 'Superhuman', difficulty: 'Legendary', speed: 14, freq: 30, color: '#ffd700' },
+            { id: 21, name: 'Beyond', difficulty: 'Legendary', speed: 15, freq: 28, color: '#ffd700' },
+            { id: 22, name: 'Transcend', difficulty: 'Legendary', speed: 15, freq: 26, color: '#ffd700' },
+            { id: 23, name: 'Cosmic', difficulty: 'Mythic', speed: 16, freq: 24, color: '#00ffff' },
+            { id: 24, name: 'The End', difficulty: 'Mythic', speed: 17, freq: 22, color: '#00ffff' }
+        ];
+
+        // Load game data
+        function loadGame() {
+            const saved = localStorage.getItem('geometryDashData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                highScore = data.highScore || 0;
+                coins = data.coins || 0;
+                unlockedSkins = data.unlockedSkins || [0];
+                selectedSkin = data.selectedSkin || 0;
+                playerName = data.playerName || 'Player';
+                document.getElementById('playerName').value = playerName;
+            }
+
+            const lb = localStorage.getItem('leaderboard');
+            if (lb) leaderboard = JSON.parse(lb);
+
+            updateUI();
+        }
+
+        function saveGame() {
+            const data = { highScore, coins, unlockedSkins, selectedSkin, playerName };
+            localStorage.setItem('geometryDashData', JSON.stringify(data));
+        }
+
+        function updateUI() {
+            document.getElementById('coinDisplay').textContent = coins;
+            document.getElementById('shopCoins').textContent = coins;
+        }
+
+        // Navigation
+        function showMenu() {
+            hideAll();
+            document.querySelector('.menu').classList.add('active');
+            gameState = 'menu';
+        }
+
+        function showLevels() {
+            hideAll();
+            document.querySelector('.level-select').classList.add('active');
+            renderLevels();
+        }
+
+        function showShop() {
+            hideAll();
+            document.querySelector('.shop').classList.add('active');
+            renderSkins();
+        }
+
+        function showLeaderboard() {
+            hideAll();
+            document.querySelector('.leaderboard').classList.add('active');
+            renderLeaderboard();
+        }
+
+        function hideAll() {
+            document.querySelectorAll('.menu, .level-select, .shop, .leaderboard, .game-over').forEach(el => {
+                el.classList.remove('active');
+            });
+            canvas.classList.remove('active');
+        }
+
+        // Render functions
+        function renderLevels() {
+            const grid = document.getElementById('levelGrid');
+            grid.innerHTML = '';
+            levels.forEach(level => {
+                const btn = document.createElement('div');
+                btn.className = 'level-btn' + (selectedLevel === level.id ? ' selected' : '');
+                btn.innerHTML = `<strong>${level.name}</strong><br><small style="color:${level.color}">${level.difficulty}</small>`;
+                btn.onclick = () => {
+                    selectedLevel = level.id;
+                    renderLevels();
+                };
+                grid.appendChild(btn);
+            });
+        }
+
+        function renderSkins() {
+            const grid = document.getElementById('skinGrid');
+            grid.innerHTML = '';
+            skins.forEach(skin => {
+                const unlocked = unlockedSkins.includes(skin.id);
+                const selected = selectedSkin === skin.id;
+                const card = document.createElement('div');
+                card.className = 'skin-card' + (selected ? ' selected' : '');
+                
+                let bgColor = skin.color;
+                if (skin.color === 'rainbow' || skin.color === 'legendary') bgColor = '#666';
+                
+                card.innerHTML = `
+                    <div class="skin-preview" style="background:${bgColor}"></div>
+                    <small>${skin.name}</small><br>
+                    ${!unlocked ? `<button style="margin-top:5px;padding:5px 10px;font-size:0.8em" ${coins < skin.price ? 'disabled' : ''} onclick="buySkin(${skin.id})">${skin.price} coins</button>` : 
+                    `<button style="margin-top:5px;padding:5px 10px;font-size:0.8em" onclick="selectSkin(${skin.id})">${selected ? 'EQUIPPED' : 'SELECT'}</button>`}
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderLeaderboard() {
+            const list = document.getElementById('leaderboardList');
+            if (leaderboard.length === 0) {
+                list.innerHTML = '<p style="text-align:center">No scores yet!</p>';
+            } else {
+                list.innerHTML = leaderboard.map((entry, i) => 
+                    `<div class="leaderboard-item">
+                        <span>#${i + 1} ${entry.name}</span>
+                        <span style="color:#ffd700">${entry.score}</span>
+                    </div>`
+                ).join('');
+            }
+        }
+
+        function buySkin(id) {
+            const skin = skins[id];
+            if (coins >= skin.price && !unlockedSkins.includes(id)) {
+                coins -= skin.price;
+                unlockedSkins.push(id);
+                saveGame();
+                updateUI();
+                renderSkins();
+            }
+        }
+
+        function selectSkin(id) {
+            selectedSkin = id;
+            saveGame();
+            renderSkins();
+        }
+
+        // Game functions
+        function initGame() {
+            const level = levels[selectedLevel];
+            player = {
+                x: 100, y: 300, width: 30, height: 30,
+                velocityY: 0, gravity: 0.8, jumpPower: -15,
+                isJumping: false, isFlying: false, rotation: 0
+            };
+            obstacles = [];
+            particles = [];
+            gameSpeed = level.speed;
+            distance = 0;
+            score = 0;
+        }
+
+        function startGame() {
+            playerName = document.getElementById('playerName').value || 'Player';
+            saveGame();
+            initGame();
+            hideAll();
+            canvas.classList.add('active');
+            document.querySelector('.controls').style.display = 'block';
+            document.querySelector('.game-stats').style.display = 'block';
+            document.getElementById('levelDisplay').textContent = levels[selectedLevel].name;
+            gameState = 'playing';
+            gameLoop();
+        }
+
+        function endGame() {
+            gameState = 'gameOver';
+            cancelAnimationFrame(animationId);
+            
+            if (score > highScore) {
+                highScore = score;
+                updateLeaderboard();
+            }
+            
+            const earnedCoins = Math.floor(score / 10);
+            coins += earnedCoins;
+            saveGame();
+            
+            document.getElementById('finalScore').textContent = score;
+            document.getElementById('finalHighScore').textContent = highScore;
+            document.getElementById('earnedCoins').textContent = earnedCoins;
+            
+            canvas.classList.remove('active');
+            document.querySelector('.controls').style.display = 'none';
+            document.querySelector('.game-stats').style.display = 'none';
+            document.querySelector('.game-over').classList.add('active');
+            updateUI();
+        }
+
+        function updateLeaderboard() {
+            leaderboard.push({ name: playerName, score: score, timestamp: Date.now() });
+            leaderboard.sort((a, b) => b.score - a.score);
+            leaderboard = leaderboard.slice(0, 10);
+            localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+        }
+
+        // Drawing functions
+        function drawPlayer() {
+            const skin = skins[selectedSkin];
+            
+            ctx.save();
+            ctx.translate(player.x + player.width / 2, player.y + player.height / 2);
+            ctx.rotate(player.rotation);
+            
+            if (skin.color === 'rainbow') {
+                const gradient = ctx.createLinearGradient(-player.width/2, -player.height/2, player.width/2, player.height/2);
+                gradient.addColorStop(0, '#ff0000');
+                gradient.addColorStop(0.33, '#00ff00');
+                gradient.addColorStop(0.67, '#0066ff');
+                gradient.addColorStop(1, '#ff00ff');
+                ctx.fillStyle = gradient;
+            } else if (skin.color === 'legendary') {
+                const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, player.width);
+                gradient.addColorStop(0, '#ffffff');
+                gradient.addColorStop(0.5, '#ffd700');
+                gradient.addColorStop(1, '#ff8800');
+                ctx.fillStyle = gradient;
+            } else {
+                ctx.fillStyle = skin.color;
+            }
+            
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = skin.color;
+            
+            if (skin.shape === 'cube') {
+                ctx.fillRect(-player.width/2, -player.height/2, player.width, player.height);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(-player.width/2, -player.height/2, player.width, player.height);
+            } else if (skin.shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(0, 0, player.width/2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            } else if (skin.shape === 'triangle') {
+                ctx.beginPath();
+                ctx.moveTo(0, -player.height/2);
+                ctx.lineTo(player.width/2, player.height/2);
+                ctx.lineTo(-player.width/2, player.height/2);
+                ctx.closePath();
+                ctx.fill();
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+            
+            ctx.restore();
+        }
+
+        function createParticles(x, y) {
+            for (let i = 0; i < 10; i++) {
+                particles.push({
+                    x, y,
+                    vx: (Math.random() - 0.5) * 5,
+                    vy: (Math.random() - 0.5) * 5,
+                    life: 30,
+                    color: skins[selectedSkin].color
+                });
+            }
+        }
+
+        function gameLoop() {
+            if (gameState !== 'playing') return;
+            
+            const level = levels[selectedLevel];
+            
+            // Clear canvas
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#222';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < canvas.width; i += 50) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i < canvas.height; i += 50) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+            
+            // Update player
+            if (player.isFlying) {
+                player.velocityY = -8;
+            } else {
+                player.velocityY += player.gravity;
+            }
+            
+            player.y += player.velocityY;
+            player.rotation += 0.1;
+            
+            // Ground collision
+            if (player.y + player.height > canvas.height - 50) {
+                player.y = canvas.height - 50 - player.height;
+                player.velocityY = 0;
+                player.isJumping = false;
+            }
+            
+            // Ceiling collision
+            if (player.y < 0) {
+                player.y = 0;
+                player.velocityY = 0;
+            }
+            
+            // Update score
+            distance += gameSpeed;
+            score = Math.floor(distance / 10);
+            document.getElementById('scoreDisplay').textContent = score;
+            
+            // Spawn obstacles
+            if (Math.random() < 1 / level.freq) {
+                const height = 30 + Math.random() * 50;
+                const isTop = Math.random() < 0.3;
+                obstacles.push({
+                    x: canvas.width,
+                    y: isTop ? 0 : canvas.height - 50 - height,
+                    width: 30,
+                    height: height
+                });
+            }
+            
+            // Update obstacles
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                const obs = obstacles[i];
+                obs.x -= gameSpeed;
+                
+                // Draw obstacle
+                ctx.fillStyle = '#ff0000';
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#ff0000';
+                ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
+                
+                // Collision detection
+                if (player.x < obs.x + obs.width &&
+                    player.x + player.width > obs.x &&
+                    player.y < obs.y + obs.height &&
+                    player.y + player.height > obs.y) {
+                    createParticles(player.x + player.width/2, player.y + player.height/2);
+                    endGame();
+                    return;
+                }
+                
+                // Remove off-screen obstacles
+                if (obs.x < -obs.width) {
+                    obstacles.splice(i, 1);
+                }
+            }
+            
+            // Update particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life--;
+                
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.life / 30;
+                ctx.fillRect(p.x, p.y, 3, 3);
+                ctx.globalAlpha = 1;
+                
+                if (p.life <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+            
+            // Draw ground
+            ctx.fillStyle = '#333';
+            ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
+            
+            // Draw player
+            drawPlayer();
+            
+            animationId = requestAnimationFrame(gameLoop);
+        }
+
+        // Controls
+        canvas.addEventListener('mousedown', () => {
+            if (gameState === 'playing' && !player.isJumping && player.y >= canvas.height - 50 - player.height - 1) {
+                player.velocityY = player.jumpPower;
+                player.isJumping = true;
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (gameState !== 'playing') return;
+            
+            if (e.code === 'Space' && !player.isJumping && player.y >= canvas.height - 50 - player.height - 1) {
+                player.velocityY = player.jumpPower;
+                player.isJumping = true;
+                e.preventDefault();
+            }
+            
+            if (e.code === 'KeyW' || e.code === 'ArrowUp') {
+                player.isFlying = true;
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.code === 'KeyW' || e.code === 'ArrowUp') {
+                player.isFlying = false;
+            }
+        });
+
+        // Initialize on load
+        window.onload = () => {
+            loadGame();
+        };
+    </script>
+</body>
+</html>
